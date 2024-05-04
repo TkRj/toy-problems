@@ -32,29 +32,4 @@ function allAnagrams(string) {
 }
 
 
-// APPROACH 2
-// Time complexity: O(n^2)
-function allAnagrams(string) {
-  var stringArray = string.split('');
-  var anagrams = [];
-  var current;
-  var rest;
-  var restAnagrams;
-  var next;
-
-  if (string.length === 1) {
-    return [string];
-  }
-
-  for (var i = 0; i < string.length; i++) {
-    rest = Object.create(stringArray);
-    current = rest.splice(i, 1);
-    restAnagrams = allAnagrams(rest.join(''))
-    for (var j = 0; j < restAnagrams.length; j++) {
-      next = current.concat(restAnagrams[j]);
-      anagrams.push(next.join(''));
-    }
-  }
-
-  return anagrams;
-}
+module.exports = allAnagrams;
